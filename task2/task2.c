@@ -10,13 +10,13 @@ int main(){
     /* текущее время */
     (void) time(&now);
     /* меняем окружение на Pacific Standart Time */
-    putenv("TZ=PST");
+    putenv("TZ=PST8");
     printf("%s", ctime(&now));
 
     sp = localtime(&now);
-    printf("%d/%d/%02d %d:%02d %s\n",
+    printf("%d/%d/%d %d:%02d %s\n",
         sp->tm_mon + 1, sp->tm_mday,
-        sp->tm_year, sp->tm_hour,
+        sp->tm_year + 1900, sp->tm_hour,
         sp->tm_min, tzname[sp->tm_isdst]);
     exit(0);
 }
