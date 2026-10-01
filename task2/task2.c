@@ -9,8 +9,9 @@ int main(){
     struct tm *sp;
     /* текущее время */
     (void) time( &now );
-    putenv("TZ=PST8")
-    printf("%s", ctime( &now ) );
+    /* меняем окружение на Pacific Standart Time */
+    putenv("TZ=PST")
+    printf("%s", ctime(&now));
 
     sp = localtime(&now);
     printf("%d/%d/%02d %d:%02d %s\n",
