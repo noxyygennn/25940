@@ -9,12 +9,19 @@ int main(){
     struct tm *sp;
     /* текущее время */
     (void) time(&now);
+    printf("Local Time (BIOS):    %s\n", ctime(&now));
+
+    sp = gmtime(&now);
+    printf("UTC+0 Time:    %d/%d/%02d %d:%02d UTC\n",
+        sp->tm_mon + 1, sp->tm_mday,
+        sp->tm_year + 1900, sp->tm_hour,
+        sp->tm_min);
+
     /* меняем окружение на Pacific Standart Time */
     putenv("TZ=PST8");
-    printf("%s", ctime(&now));
-
+    tzset();
     sp = localtime(&now);
-    printf("%d/%d/%02d %d:%02d %s\n",
+    printf("PST8:    %d/%d/%02d %d:%02d %s\n",
         sp->tm_mon + 1, sp->tm_mday,
         sp->tm_year + 1900, sp->tm_hour,
         sp->tm_min, tzname[sp->tm_isdst]);
