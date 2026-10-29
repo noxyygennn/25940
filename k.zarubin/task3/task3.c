@@ -9,7 +9,7 @@ void print_ids(){
 }
 
 void check_file(){
-  FILE *file = fopen("file", "r+");
+  FILE *file = fopen("file.txt", "r+");
   if (file == NULL){
     perror("fopen");
     return;
