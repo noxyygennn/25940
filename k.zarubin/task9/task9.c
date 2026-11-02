@@ -6,7 +6,7 @@
 int main(){
     pid_t pid = fork();
     if (pid == 0) {
-        printf("CHILD: PID = %d, PPID = %d\n", getpid(), getppid());
+        printf("CHILD: PID = %d, PPID = %d\n\n", getpid(), getppid());
         fflush(stdout);
 
         int status = execlp("cat", "cat", "file.txt", NULL);
@@ -17,7 +17,7 @@ int main(){
     }
 
     else if (pid > 0) {
-        printf("PARENT: PID = %d, PPID = %d\n\n", getpid(), getppid());
+        printf("PARENT: PID = %d, PPID = %d\n", getpid(), getppid());
         fflush(stdout);
 
         int status;
