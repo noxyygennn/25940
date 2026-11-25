@@ -1,13 +1,19 @@
-CC = gcc
-CFLAGS = -Wall -Wextra
+CC = cc
+CFLAGS = -O2
+LDFLAGS =
+LIBS =
+
 TARGET = task25
+SRCS = task25.c
+OBJS = $(SRCS:.c=.o)
 
 all: $(TARGET)
 
-$(TARGET): task25.c
-	$(CC) $(CFLAGS) -o $(TARGET) task25.c
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJS) $(LIBS)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
 
 clean:
-	rm -f $(TARGET)
-
-.PHONY: all clean
+	rm -f $(OBJS) $(TARGET)
