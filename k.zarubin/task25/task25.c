@@ -37,7 +37,7 @@ int main(){
 
     else {
         close(fd[0]);
-        const char *txt = "Aaaaa WHat a niCE TExT here sdgjhFDJHSncncncncOOOOOO;;;..\n";
+        const char *txt = "The Quick BROWN fox JuMpS over the LAZY dog;;;..\n";
         write(fd[1], txt, strlen(txt));
         close(fd[1]);
         wait(NULL);
